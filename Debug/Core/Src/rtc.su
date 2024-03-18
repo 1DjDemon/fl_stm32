@@ -1,0 +1,2 @@
+../Core/Src/rtc.c:32:6:rtc_Init	8	static
+../Core/Src/rtc.c:54:6:rtc_handle	8	static

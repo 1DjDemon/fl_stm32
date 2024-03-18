@@ -1,0 +1,7 @@
+../Core/Src/encoder.c:52:17:button_has_clicks	0	static
+../Core/Src/encoder.c:64:9:button_get_clicks_count	0	static
+../Core/Src/encoder.c:71:17:button_is_held	0	static
+../Core/Src/encoder.c:84:6:encoder_init	8	static
+../Core/Src/encoder.c:110:6:button_timer_tick	0	static
+../Core/Src/encoder.c:115:6:encoder_handling	4	static
+../Core/Src/encoder.c:223:6:keyboard_handling	8	static,ignoring_inline_asm

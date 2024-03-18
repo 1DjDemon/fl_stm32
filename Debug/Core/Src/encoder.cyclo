@@ -1,0 +1,7 @@
+encoder.c:52:17:button_has_clicks	1
+encoder.c:64:9:button_get_clicks_count	1
+encoder.c:71:17:button_is_held	2
+encoder.c:84:6:encoder_init	1
+encoder.c:110:6:button_timer_tick	1
+encoder.c:115:6:encoder_handling	18
+encoder.c:223:6:keyboard_handling	3

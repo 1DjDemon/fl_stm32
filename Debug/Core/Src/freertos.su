@@ -1,0 +1,9 @@
+../Core/Src/freertos.c:176:6:StartDefaultTask	8	static
+../Core/Src/freertos.c:347:6:StartUARTTask	8	static
+../Core/Src/freertos.c:194:6:StartdispleyTask	8	static
+../Core/Src/freertos.c:227:6:StartencodetTask	8	static
+../Core/Src/freertos.c:260:6:StartGPSTask	16	static
+../Core/Src/freertos.c:299:6:StartRTCTask	8	static
+../Core/Src/freertos.c:365:6:StartSensorTask	8	static
+../Core/Src/freertos.c:99:6:vApplicationGetIdleTaskMemory	0	static
+../Core/Src/freertos.c:113:6:MX_FREERTOS_Init	208	static

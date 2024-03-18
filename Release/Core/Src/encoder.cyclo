@@ -1,0 +1,4 @@
+../Core/Src/encoder.c:32:6:encoder_init	1
+../Core/Src/encoder.c:37:6:encoder_handle	1
+../Core/Src/encoder.c:42:6:button_timer_tick	1
+../Core/Src/encoder.c:47:6:keyboard_handling	1
