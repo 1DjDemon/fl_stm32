@@ -25,21 +25,35 @@
 
 /* Private constants and variables -------------------------------------------*/
 uint8_t Message[64];
+uint8_t cursor;
+page_properties_t page_properties;
 
 /* Private function prototypes -----------------------------------------------*/
 
+void display_menu_screen (void);
+void display_setings_screen (void);
 
 /* Private user code ---------------------------------------------------------*/
 void display_Init(void)
 {
 	ssd1306_Init();
+	page_properties.page_list = page_start;
+	page_properties.line = line_0;
 	osDelay(1000);
 
 }
 
 void display_handle (void)
 {
-	display_start_screen();
+	switch (page_properties.page_list)
+	{
+	  case page_start:   	display_start_screen(); 	break;
+	  case page_menu:   	display_menu_screen();		break;
+	  case page_settings:   display_setings_screen();	break;
+	  default:              display_start_screen(); 	break;
+	}
+
+
 	ssd1306_UpdateScreen();
 
 }
@@ -69,6 +83,70 @@ void display_start_screen (void)
 	ssd1306_SetCursor(2, 48);
 	sprintf((char*)Message,	"E= %02d    ", Enc_Counter);
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	//page_list = page_start;
+
+}
+
+void display_menu_screen (void)
+{
+	ssd1306_Fill(Black);
+
+	ssd1306_SetCursor(2, 0);
+	sprintf((char*)Message,	"Menu");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+//if(Enc_Counter%2 == 0)
+	ssd1306_SetCursor(10, 24);
+	sprintf((char*)Message,	"Setings");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	ssd1306_SetCursor(10, 36);
+	sprintf((char*)Message,	"Test ");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+	switch(Enc_Counter%2)
+	{
+		case 0: ssd1306_SetCursor(2, 24); page_properties.line=line_0; break;
+		case 1: ssd1306_SetCursor(2, 36); page_properties.line=line_1;break;
+
+		default: break;
+	}
+	sprintf((char*)Message,	"*");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+
+}
+
+
+void display_setings_screen (void)
+{
+	ssd1306_Fill(Black);
+
+	ssd1306_SetCursor(2, 0);
+	sprintf((char*)Message,	"Setings");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+//if(Enc_Counter%2 == 0)
+	ssd1306_SetCursor(10, 14);
+	sprintf((char*)Message,	"Date");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	ssd1306_SetCursor(10, 26);
+	sprintf((char*)Message,	"Time");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	ssd1306_SetCursor(10, 38);
+	sprintf((char*)Message,	"Synch GPS");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+	switch(Enc_Counter%3)
+	{
+		case 0: ssd1306_SetCursor(2, 14); page_properties.line=line_0; break;
+		case 1: ssd1306_SetCursor(2, 26); page_properties.line=line_1;break;
+		case 2: ssd1306_SetCursor(2, 38); page_properties.line=line_2;break;
+
+		default: break;
+	}
+	sprintf((char*)Message,	"*");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
 
 }
 

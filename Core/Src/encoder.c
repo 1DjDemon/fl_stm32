@@ -44,6 +44,8 @@ uint8_t Enc_Counter = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 button_status_t button_has_clicks (button_t *_button);
+button_status_t button_is_click (button_t *_button);
+button_status_t button_is_holding (button_t *_button);
 button_status_t button_is_held (button_t *_button);
 uint8_t button_get_clicks_count (button_t *_button);
 
@@ -61,11 +63,36 @@ button_status_t button_has_clicks (button_t *_button)
   return status;
 }
 
+button_status_t button_is_holding (button_t *_button)
+{
+  button_status_t status = BUTTON_NO;
+
+  if (get_state(HOLDING_PROCESS) != 0)
+  {
+    status = BUTTON_YES;
+  }
+
+  return status;
+}
+
 uint8_t button_get_clicks_count (button_t *_button)
 {
 //  reset_state(MANY_CLICKS);
 //  set_state(CLICKS_COUNTER_RESET);
   return _button->_clicks_counter;
+}
+
+button_status_t button_is_click (button_t *_button)
+{
+  button_status_t status = BUTTON_NO;
+
+  if (get_state(CLICK) != 0)
+  {
+    reset_state(CLICK);
+    status = BUTTON_YES;
+  }
+
+  return status;
 }
 
 button_status_t button_is_held (button_t *_button)
@@ -231,6 +258,25 @@ void keyboard_handling(void)
 	      default:                          break;
 	    }
 	  }
-
+	if(page_properties.page_list == page_start)
+	{
+		if (button_is_holding (&button) == BUTTON_YES)
+		{
+			page_properties.page_list	= page_menu;
+			page_properties.line 		= line_0;
+		}
+	}
+	if(page_properties.page_list == page_menu)
+	{
+		if(button_is_click(&button) == BUTTON_YES)
+		{
+			switch(page_properties.line)
+			{
+				case line_0: page_properties.page_list = page_settings; page_properties.line = line_0; break;
+				case line_1: break;
+				default:	break;
+			}
+		}
+	}
 
 }

@@ -1,4 +1,4 @@
-"./Core/Src/bme280.o"
+"./Core/Src/BME280.o"
 "./Core/Src/display.o"
 "./Core/Src/encoder.o"
 "./Core/Src/freertos.o"
@@ -36,6 +36,7 @@
 "./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
 "./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
 "./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+"./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_usart.o"
 "./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o"
 "./Middlewares/Third_Party/FreeRTOS/Source/croutine.o"
 "./Middlewares/Third_Party/FreeRTOS/Source/event_groups.o"

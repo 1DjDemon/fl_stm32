@@ -1,3 +1,5 @@
-display.c:33:6:display_Init	1
-display.c:47:6:display_start_screen	1
-display.c:40:6:display_handle	1
+../Core/Src/display.c:37:6:display_Init	1
+../Core/Src/display.c:61:6:display_start_screen	1
+../Core/Src/display.c:90:6:display_menu_screen	2
+../Core/Src/display.c:120:6:display_setings_screen	4
+../Core/Src/display.c:46:6:display_handle	4
