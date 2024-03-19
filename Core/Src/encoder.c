@@ -278,5 +278,20 @@ void keyboard_handling(void)
 			}
 		}
 	}
+	if(page_properties.page_list == page_settings)
+	{
+		if(button_is_click(&button) == BUTTON_YES)
+		{
+			switch(page_properties.line)
+			{
+				case line_0: page_properties.page_list = page_setting_date; page_properties.line = line_0; break;
+				case line_1: page_properties.page_list = page_setting_time; page_properties.line = line_0; break;
+				case line_2: page_properties.page_list = page_setting_GPS; page_properties.line = line_0; break;
+				default:	break;
+			}
+
+		}
+
+	}
 
 }

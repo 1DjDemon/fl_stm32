@@ -1,2 +1,2 @@
-../Core/Src/sensors.c:29:6:sensors_Init	1
-../Core/Src/sensors.c:37:6:sensors_Handle	1
+sensors.c:29:6:sensors_Init	1
+sensors.c:37:6:sensors_Handle	1

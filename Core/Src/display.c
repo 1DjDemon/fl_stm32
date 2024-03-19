@@ -32,6 +32,9 @@ page_properties_t page_properties;
 
 void display_menu_screen (void);
 void display_setings_screen (void);
+void display_seting_data_screen (void);
+void display_seting_time_screen (void);
+void display_seting_GPS_screen (void);
 
 /* Private user code ---------------------------------------------------------*/
 void display_Init(void)
@@ -47,9 +50,12 @@ void display_handle (void)
 {
 	switch (page_properties.page_list)
 	{
-	  case page_start:   	display_start_screen(); 	break;
-	  case page_menu:   	display_menu_screen();		break;
-	  case page_settings:   display_setings_screen();	break;
+	  case page_start			: display_start_screen(); 	break;
+	  case page_menu			:display_menu_screen();		break;
+	  case page_settings		: display_setings_screen();	break;
+	  case page_setting_date	: display_seting_data_screen();	break;
+	  case page_setting_time	: display_seting_time_screen();	break;
+	  case page_setting_GPS		: display_seting_GPS_screen();	break;
 	  default:              display_start_screen(); 	break;
 	}
 
@@ -147,6 +153,38 @@ void display_setings_screen (void)
 	sprintf((char*)Message,	"*");
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
 
+}
+
+void display_seting_data_screen (void)
+{
+	ssd1306_Fill(Black);
+
+	ssd1306_SetCursor(2, 0);
+	sprintf((char*)Message,	"Seting Date");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
 
 }
+void display_seting_time_screen (void)
+{
+	ssd1306_Fill(Black);
+
+	ssd1306_SetCursor(2, 0);
+	sprintf((char*)Message,	"Seting Time");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+}
+void display_seting_GPS_screen (void)
+{
+	ssd1306_Fill(Black);
+
+	ssd1306_SetCursor(2, 0);
+	sprintf((char*)Message,	"Seting GPS");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+}
+
+
+
+
 

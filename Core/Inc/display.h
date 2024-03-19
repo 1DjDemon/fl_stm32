@@ -23,7 +23,10 @@ typedef enum
 {
 	page_start = 0,
 	page_menu,
-	page_settings
+	page_settings,
+	page_setting_date,
+	page_setting_time,
+	page_setting_GPS
 
 }page_list_t;
 

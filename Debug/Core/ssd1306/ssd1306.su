@@ -4,7 +4,7 @@
 ../Core/ssd1306/ssd1306.c:63:17:ssd1306_FillBuffer	8	static
 ../Core/ssd1306/ssd1306.c:175:6:ssd1306_Fill	8	static
 ../Core/ssd1306/ssd1306.c:180:6:ssd1306_UpdateScreen	24	static
-../Core/ssd1306/ssd1306.c:201:6:ssd1306_DrawPixel	4	static
+../Core/ssd1306/ssd1306.c:201:6:ssd1306_DrawPixel	0	static
 ../Core/ssd1306/ssd1306.c:221:6:ssd1306_WriteChar	56	static
 ../Core/ssd1306/ssd1306.c:256:6:ssd1306_WriteString	24	static
 ../Core/ssd1306/ssd1306.c:270:6:ssd1306_SetCursor	0	static
