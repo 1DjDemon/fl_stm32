@@ -19,6 +19,7 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "i2c.h"
+#include "display.h"
 
 /* Exported defines ----------------------------------------------------------*/
 
@@ -40,6 +41,7 @@ typedef struct {
 
 /* Exported constants and variables ------------------------------------------*/
 extern rtc_t timedata;
+extern rtc_t temptimedata;
 
 /* Exported functions prototypes ---------------------------------------------*/
 void rtc_Init(void);

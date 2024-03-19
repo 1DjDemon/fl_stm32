@@ -51,7 +51,7 @@ void display_handle (void)
 	switch (page_properties.page_list)
 	{
 	  case page_start			: display_start_screen(); 	break;
-	  case page_menu			:display_menu_screen();		break;
+	  case page_menu			: display_menu_screen();		break;
 	  case page_settings		: display_setings_screen();	break;
 	  case page_setting_date	: display_seting_data_screen();	break;
 	  case page_setting_time	: display_seting_time_screen();	break;
@@ -66,6 +66,7 @@ void display_handle (void)
 
 void display_start_screen (void)
 {
+	ssd1306_Fill(Black);
 	ssd1306_SetCursor(2,0);
 	sprintf((char*)Message,	"%02d:%02d:%02d %02d.%02d.%02d   ", timedata.hour,
 																timedata.min,
@@ -83,12 +84,12 @@ void display_start_screen (void)
 
 	sprintf((char*)Message,	"P= %.2fkPa      ", BME280_sensor.pressure/1000);
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
-	ssd1306_SetCursor(2, 36);
-	sprintf((char*)Message,	"K= %02d %02d %02d     ", button_get_clicks_count (&button), (GPIOA->IDR & 0x20)>>5, global_tick);
-	ssd1306_WriteString((char*)Message, Font_7x10, White);
-	ssd1306_SetCursor(2, 48);
-	sprintf((char*)Message,	"E= %02d    ", Enc_Counter);
-	ssd1306_WriteString((char*)Message, Font_7x10, White);
+//	ssd1306_SetCursor(2, 36);
+//	sprintf((char*)Message,	"K= %02d %02d %02d     ", button_get_clicks_count (&button), (GPIOA->IDR & 0x20)>>5, global_tick);
+//	ssd1306_WriteString((char*)Message, Font_7x10, White);
+//	ssd1306_SetCursor(2, 48);
+//	sprintf((char*)Message,	"E= %02d    ", Enc_Counter);
+//	ssd1306_WriteString((char*)Message, Font_7x10, White);
 	//page_list = page_start;
 
 }
@@ -163,6 +164,18 @@ void display_seting_data_screen (void)
 	sprintf((char*)Message,	"Seting Date");
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
 
+	ssd1306_SetCursor(10, 26);
+	sprintf((char*)Message,	"%02d.%02d.%04d", temptimedata.date, temptimedata.month, temptimedata.year);
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+	switch(page_properties.line)
+	{
+		case line_0: ssd1306_Line(10, 36, 24, 36, White); break;
+		case line_1: ssd1306_Line(31, 36, 45, 36, White); break;
+		case line_2: ssd1306_Line(52, 36, 80, 36, White); break;
+		default: break;
+	}
+
 
 }
 void display_seting_time_screen (void)
@@ -173,6 +186,18 @@ void display_seting_time_screen (void)
 	sprintf((char*)Message,	"Seting Time");
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
 
+	ssd1306_SetCursor(10, 26);
+	sprintf((char*)Message,	"%02d:%02d:%02d", temptimedata.hour, temptimedata.min, temptimedata.sec);
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+	switch(page_properties.line)
+	{
+		case line_0: ssd1306_Line(10, 36, 24, 36, White); break;
+		case line_1: ssd1306_Line(31, 36, 45, 36, White); break;
+		case line_2: ssd1306_Line(52, 36, 66, 36, White); break;
+		default: break;
+	}
+
 }
 void display_seting_GPS_screen (void)
 {
@@ -181,6 +206,7 @@ void display_seting_GPS_screen (void)
 	ssd1306_SetCursor(2, 0);
 	sprintf((char*)Message,	"Seting GPS");
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
 
 }
 

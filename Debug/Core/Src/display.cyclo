@@ -1,8 +1,8 @@
-display.c:40:6:display_Init	1
-display.c:67:6:display_start_screen	1
-display.c:96:6:display_menu_screen	2
-display.c:126:6:display_setings_screen	4
-display.c:158:6:display_seting_data_screen	1
-display.c:168:6:display_seting_time_screen	1
-display.c:177:6:display_seting_GPS_screen	1
-display.c:49:6:display_handle	7
+../Core/Src/display.c:40:6:display_Init	1
+../Core/Src/display.c:67:6:display_start_screen	1
+../Core/Src/display.c:97:6:display_menu_screen	2
+../Core/Src/display.c:127:6:display_setings_screen	4
+../Core/Src/display.c:159:6:display_seting_data_screen	4
+../Core/Src/display.c:181:6:display_seting_time_screen	4
+../Core/Src/display.c:202:6:display_seting_GPS_screen	1
+../Core/Src/display.c:49:6:display_handle	7

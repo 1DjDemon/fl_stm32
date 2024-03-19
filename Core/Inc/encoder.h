@@ -59,7 +59,7 @@ typedef struct {
 extern GPIO_PinState test;
 
 extern button_t  button;
-extern uint8_t Enc_Counter;
+extern uint16_t Enc_Counter;
 extern __IO uint32_t global_tick;
 
 /* Exported macro ------------------------------------------------------------*/
