@@ -36,18 +36,17 @@
 
 
 /* Private constants and variables -------------------------------------------*/
-HAL_TIM_StateTypeDef t;
 __IO uint32_t global_tick;
 
 button_t  button;
 uint16_t Enc_Counter = 0;
 
 /* Private function prototypes -----------------------------------------------*/
-button_status_t button_has_clicks (button_t *_button);
-button_status_t button_is_click (button_t *_button);
-button_status_t button_is_holding (button_t *_button);
-button_status_t button_is_held (button_t *_button);
-uint8_t button_get_clicks_count (button_t *_button);
+button_status_t button_has_clicks	(button_t *_button);
+button_status_t button_is_click 	(button_t *_button);
+button_status_t button_is_holding 	(button_t *_button);
+button_status_t button_is_held 		(button_t *_button);
+uint8_t button_get_clicks_count 	(button_t *_button);
 
 /* Private user code ---------------------------------------------------------*/
 

@@ -17,6 +17,7 @@
 
 
 /* Private typedef -----------------------------------------------------------*/
+//Структура с флагами для настройки дыты и время
 typedef struct
 {
 	uint8_t flag_readtemptimedata;
@@ -59,15 +60,6 @@ void rtc_Init(void)
 	timedata.year	= 0;
 
 	DS1307_Init(&hi2c2);
-
-//		DS1307_SetTimeZone(+3, 00);
-//		DS1307_SetDate(17);
-//		DS1307_SetMonth(3);
-//		DS1307_SetYear(2024);
-////		DS1307_SetDayOfWeek(4);
-//		DS1307_SetHour(17);
-//		DS1307_SetMinute(6);
-//		DS1307_SetSecond(00);
 }
 
 void rtc_handle (void)

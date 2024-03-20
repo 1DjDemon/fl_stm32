@@ -1,0 +1,2 @@
+../Core/Src/uart_pc.c:29:6:uart_pc_init	1
+../Core/Src/uart_pc.c:31:6:uart_pc_handle	1

@@ -153,7 +153,7 @@ void MX_FREERTOS_Init(void) {
   rtcTaskHandle = osThreadCreate(osThread(rtcTask), NULL);
 
   /* definition and creation of UARTTask */
-  osThreadDef(UARTTask, StartUARTTask, osPriorityIdle, 0, 128);
+  osThreadDef(UARTTask, StartUARTTask, osPriorityIdle, 0, 256);
   UARTTaskHandle = osThreadCreate(osThread(UARTTask), NULL);
 
   /* definition and creation of sensorsTask */
@@ -350,7 +350,8 @@ void StartUARTTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  uart_pc_handle();
+	  osDelay(100);
   }
   /* USER CODE END StartUARTTask */
 }
