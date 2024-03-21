@@ -138,7 +138,7 @@ void MX_FREERTOS_Init(void) {
   encodetTaskHandle = osThreadCreate(osThread(encodetTask), NULL);
 
   /* definition and creation of gpsTask */
-  osThreadDef(gpsTask, StartGPSTask, osPriorityLow, 0, 256);
+  osThreadDef(gpsTask, StartGPSTask, osPriorityLow, 0, 128);
   gpsTaskHandle = osThreadCreate(osThread(gpsTask), NULL);
 
   /* definition and creation of rtcTask */

@@ -3826,7 +3826,7 @@ void MX_FREERTOS_Init(void) {
  80020b8:	f004 fe21 	bl	8006cfe <osThreadCreate>
  80020bc:	4b28      	ldr	r3, [pc, #160]	; (8002160 <MX_FREERTOS_Init+0x110>)
  80020be:	6018      	str	r0, [r3, #0]
-  osThreadDef(gpsTask, StartGPSTask, osPriorityLow, 0, 256);
+  osThreadDef(gpsTask, StartGPSTask, osPriorityLow, 0, 128);
  80020c0:	f10d 0c58 	add.w	ip, sp, #88	; 0x58
  80020c4:	f104 0e54 	add.w	lr, r4, #84	; 0x54
  80020c8:	e8be 000f 	ldmia.w	lr!, {r0, r1, r2, r3}
