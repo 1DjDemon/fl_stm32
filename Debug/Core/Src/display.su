@@ -1,8 +1,8 @@
-../Core/Src/display.c:40:6:display_Init	8	static
-../Core/Src/display.c:67:6:display_start_screen	32	static
-../Core/Src/display.c:97:6:display_menu_screen	16	static
-../Core/Src/display.c:127:6:display_setings_screen	16	static
-../Core/Src/display.c:159:6:display_seting_data_screen	24	static
-../Core/Src/display.c:181:6:display_seting_time_screen	24	static
-../Core/Src/display.c:202:6:display_seting_GPS_screen	8	static
-../Core/Src/display.c:49:6:display_handle	8	static
+../Core/Src/display.c:42:6:display_Init	8	static
+../Core/Src/display.c:69:6:display_start_screen	32	static
+../Core/Src/display.c:99:6:display_menu_screen	16	static
+../Core/Src/display.c:129:6:display_setings_screen	16	static
+../Core/Src/display.c:161:6:display_seting_data_screen	24	static
+../Core/Src/display.c:183:6:display_seting_time_screen	24	static
+../Core/Src/display.c:204:6:display_seting_GPS_screen	8	static
+../Core/Src/display.c:51:6:display_handle	8	static

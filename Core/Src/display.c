@@ -17,6 +17,7 @@
 #include "display.h"
 #include "ssd1306.h"
 #include "encoder.h"
+#include "gps_neo6.h"
 /* Private typedef -----------------------------------------------------------*/
 
 
@@ -27,6 +28,7 @@
 uint8_t Message[64];
 uint8_t cursor;
 page_properties_t page_properties;
+uint8_t bufttttt[64];
 
 /* Private function prototypes -----------------------------------------------*/
 
@@ -56,7 +58,7 @@ void display_handle (void)
 	  case page_setting_date	: display_seting_data_screen();	break;
 	  case page_setting_time	: display_seting_time_screen();	break;
 	  case page_setting_GPS		: display_seting_GPS_screen();	break;
-	  default:              display_start_screen(); 	break;
+	  default:              	display_start_screen(); 	break;
 	}
 
 
@@ -84,12 +86,12 @@ void display_start_screen (void)
 
 	sprintf((char*)Message,	"P= %.2fkPa      ", BME280_sensor.pressure/1000);
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
-//	ssd1306_SetCursor(2, 36);
-//	sprintf((char*)Message,	"K= %02d %02d %02d     ", button_get_clicks_count (&button), (GPIOA->IDR & 0x20)>>5, global_tick);
-//	ssd1306_WriteString((char*)Message, Font_7x10, White);
-//	ssd1306_SetCursor(2, 48);
-//	sprintf((char*)Message,	"E= %02d    ", Enc_Counter);
-//	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	ssd1306_SetCursor(2, 36);
+	sprintf((char*)Message,	"K= %02d %02d %02d     ", GpsState.Hour, GpsState.Minute, GpsState.Second);
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	ssd1306_SetCursor(2, 48);
+	sprintf((char*)Message,	"E= %02d    ", bufttttt);
+	ssd1306_WriteString((char*)bufttttt, Font_7x10, White);
 	//page_list = page_start;
 
 }

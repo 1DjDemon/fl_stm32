@@ -46,7 +46,8 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  ../Core/gps_neo6/gps_neo6.h ../Core/Inc/usart.h \
  ../Core/ds1307/ds1307_for_stm32_hal.h ../Core/Inc/tim.h \
- ../Core/Inc/i2c.h ../Core/Inc/sensors.h ../Core/Inc/BME280.h
+ ../Core/Inc/i2c.h ../Core/Inc/sensors.h ../Core/Inc/BME280.h \
+ ../Core/Inc/display.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -103,3 +104,4 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Core/Inc/i2c.h:
 ../Core/Inc/sensors.h:
 ../Core/Inc/BME280.h:
+../Core/Inc/display.h:

@@ -36,6 +36,7 @@
 //#include "BME280.h"
 
 #include "sensors.h"
+#include "display.h"
 
 /* USER CODE END Includes */
 
@@ -56,14 +57,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-//uint8_t Message[64];
-//uint8_t Message2[64];
-//uint8_t Message3[64];
-
-
-
-
-//uint32_t Timer1 = HAL_GetTick();
 
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
@@ -145,7 +138,7 @@ void MX_FREERTOS_Init(void) {
   encodetTaskHandle = osThreadCreate(osThread(encodetTask), NULL);
 
   /* definition and creation of gpsTask */
-  osThreadDef(gpsTask, StartGPSTask, osPriorityLow, 0, 128);
+  osThreadDef(gpsTask, StartGPSTask, osPriorityLow, 0, 256);
   gpsTaskHandle = osThreadCreate(osThread(gpsTask), NULL);
 
   /* definition and creation of rtcTask */
@@ -198,20 +191,7 @@ void StartdispleyTask(void const * argument)
   /* Infinite loop */
 	for(;;)
 	{
-//		ssd1306_SetCursor(2,0);
-//		ssd1306_WriteString((char*)Message, Font_11x18, White);
-//		ssd1306_Line(2, 17, 24, 17, White);
-//
-//		ssd1306_SetCursor(2, 20);
-//		sprintf((char*)Message2,	"T= %.2fC", BME280_sensor.temperature);
-//		ssd1306_WriteString((char*)Message2, Font_11x18, White);
-//		ssd1306_SetCursor(2, 38);
-//
-//		sprintf((char*)Message3,	"P= %.2fkPa", BME280_sensor.pressure/1000);
-//		ssd1306_WriteString((char*)Message3, Font_11x18, White);
-
 		display_handle();
-
 		osDelay(500);
 	}
   /* USER CODE END StartdispleyTask */
@@ -231,21 +211,9 @@ void StartencodetTask(void const * argument)
   /* Infinite loop */
 	for(;;)
 	  {
-//		  encoder_handle();
-//		if(&htim3.Instance->CR1==0x01)// по часовой стрелке
-//		{
-//					Rotary++;
-//		}
 		encoder_handling();
 		keyboard_handling();
-
-
-		//sprintf((char*)Message2, "E %02d      ", test);
-
-
-//		Enc_Counter = (TIM3->CNT)/2;
-		  //sprintf((char*)Message3, "E %02d      ", Enc_Counter);
-		  osDelay(1);
+		osDelay(1);
 	  }
   /* USER CODE END StartencodetTask */
 }
@@ -261,30 +229,30 @@ void StartGPSTask(void const * argument)
 {
   /* USER CODE BEGIN StartGPSTask */
 	sprintf((char*)Message, "T %02d:%02d:%02d", 12, 12, 12);
-//	NEO6_Init(&GpsState, &huart1);
+	NEO6_Init(&GpsState, &huart1);
 	osDelay(1000);
 	sprintf((char*)Message, "T %02d:%02d:%02d", GpsState.Hour, GpsState.Minute, GpsState.Second);
   /* Infinite loop */
   for(;;)
   {
-	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+//	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
 	  NEO6_Task(&GpsState);
-	  osDelay(1000);
-
-	  if(NEO6_IsFix(&GpsState))
-	  {
-		 sprintf((char*)Message, "T %02d:%02d:%02d", GpsState.Hour, GpsState.Minute, GpsState.Second);
-	  }
-	  else
-	  {
-		  sprintf((char*)Message, "No Fix\n\r");
-
-	  }
-
-
-	  osDelay(1000);
-	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
-	  osDelay(1000);
+//	  osDelay(1);
+//	  osDelay(1000);
+//
+////	  if(NEO6_IsFix(&GpsState))
+////	  {
+////		 sprintf((char*)Message, "T %02d:%02d:%02d", GpsState.Hour, GpsState.Minute, GpsState.Second);
+////	  }
+////	  else
+////	  {
+////		  sprintf((char*)Message, "No Fix\n\r");
+////
+////	  }
+//	  HAL_UART_Receive_IT(&huart1, bufttttt, 64);
+//	  osDelay(1000);
+//	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
+//	  osDelay(1000);
   }
   /* USER CODE END StartGPSTask */
 }
@@ -299,40 +267,12 @@ void StartGPSTask(void const * argument)
 void StartRTCTask(void const * argument)
 {
   /* USER CODE BEGIN StartRTCTask */
-  /* Infinite loop */
-
-//	uint8_t second	= 0;
-//	uint8_t minute	= 0;
-//	uint8_t hour	= 0;
-//
-//
-//	DS1307_Init(&hi2c2);
 	rtc_Init();
-
-
-//	DS1307_SetTimeZone(+3, 00);
-//	DS1307_SetDate(14);
-//	DS1307_SetMonth(3);
-//	DS1307_SetYear(2024);
-//	DS1307_SetDayOfWeek(4);
-//	DS1307_SetHour(18);
-//	DS1307_SetMinute(01);
-//	DS1307_SetSecond(00);
-
+  /* Infinite loop */
   for(;;)
   {
-//	  second = DS1307_GetSecond();
-//	  minute = DS1307_GetMinute();
-//	  hour = DS1307_GetHour();
-//
-//	  sprintf((char*)Message,	"%02d:%02d:%02d     ", hour, minute, second);
-//	  sprintf((char*)Message2,	"SEC %d%d     ",((data/10)%10), (data%10));
-//	  sprintf((char*)Message2,	"SEC %02d      ", second);
-
-//	  sprintf((char*)Message3,	"MIN %d%d     ",((data/10)%10), (data%10));
-	  //sprintf((char*)Message3,	"MIN %02d      ", minute);
-	  rtc_handle();
-    osDelay(100);
+	rtc_handle();
+	osDelay(100);
   }
   /* USER CODE END StartRTCTask */
 }
@@ -366,10 +306,8 @@ void StartUARTTask(void const * argument)
 void StartSensorTask(void const * argument)
 {
   /* USER CODE BEGIN StartSensorTask */
-  /* Infinite loop */
-
 	sensors_Init();
-
+  /* Infinite loop */
   for(;;)
   {
 	  sensors_Handle();

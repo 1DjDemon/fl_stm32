@@ -49,6 +49,7 @@ typedef struct
 /* Exported constants and variables ------------------------------------------*/
 extern uint8_t Message[64];
 extern page_properties_t page_properties;
+extern uint8_t bufttttt[64];
 /* Exported macro ------------------------------------------------------------*/
 
 /* Exported functions prototypes ---------------------------------------------*/

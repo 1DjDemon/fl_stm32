@@ -28,7 +28,8 @@ Core/Src/display.o: ../Core/Src/display.c ../Core/Inc/sensors.h \
  ../Core/Inc/encoder.h ../Core/Inc/display.h ../Core/Inc/rtc.h \
  ../Core/Inc/i2c.h ../Core/Inc/BME280.h ../Core/Inc/display.h \
  ../Core/ssd1306/ssd1306.h ../Core/Inc/ssd1306_conf.h \
- ../Core/ssd1306/ssd1306_fonts.h ../Core/Inc/encoder.h
+ ../Core/ssd1306/ssd1306_fonts.h ../Core/Inc/encoder.h \
+ ../Core/gps_neo6/gps_neo6.h
 ../Core/Inc/sensors.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
@@ -67,3 +68,4 @@ Core/Src/display.o: ../Core/Src/display.c ../Core/Inc/sensors.h \
 ../Core/Inc/ssd1306_conf.h:
 ../Core/ssd1306/ssd1306_fonts.h:
 ../Core/Inc/encoder.h:
+../Core/gps_neo6/gps_neo6.h:
