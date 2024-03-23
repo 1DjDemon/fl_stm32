@@ -30,6 +30,8 @@ typedef struct
 	uint8_t flag_month;
 	uint8_t flag_year;
 
+	uint8_t flag_timezone;
+
 }flag_line_timedata_t;
 
 /* Private macro -------------------------------------------------------------*/
@@ -43,10 +45,11 @@ flag_line_timedata_t flag_line_timedata;
 
 
 /* Private function prototypes -----------------------------------------------*/
-void rtc_SetTimeData (void);
-void rtc_InstalDataEncoder (void);
-void rtc_InstalTimeEncoder (void);
-
+void rtc_SetTimeData 				(void);
+void rtc_InstalDataEncoder 			(void);
+void rtc_InstalTimeEncoder 			(void);
+void rtc_InstalTimezoneGPSEncoder	(void);
+void rtc_InstalSynchGPSEncoder 		(void);
 
 /* Private user code ---------------------------------------------------------*/
 void rtc_Init(void)
@@ -58,6 +61,8 @@ void rtc_Init(void)
 	timedata.date	= 0;
 	timedata.month	= 0;
 	timedata.year	= 0;
+
+	timedata.timezone = 0;
 
 	DS1307_Init(&hi2c2);
 }
@@ -72,6 +77,8 @@ void rtc_handle (void)
 	timedata.month	= DS1307_GetMonth();
 	timedata.year	= DS1307_GetYear();
 
+	timedata.timezone = DS1307_GetTimeZoneHour();
+
 	if(page_properties.page_list == page_setting_date)
 	{
 		rtc_InstalDataEncoder();
@@ -79,6 +86,14 @@ void rtc_handle (void)
 	if(page_properties.page_list == page_setting_time)
 	{
 		rtc_InstalTimeEncoder();
+	}
+	if(page_properties.page_list == page_setting_timezone_GPS)
+	{
+		rtc_InstalTimezoneGPSEncoder();
+	}
+	if(page_properties.page_list == page_setting_synch_GPS)
+	{
+		rtc_InstalSynchGPSEncoder();
 	}
 }
 
@@ -113,6 +128,11 @@ void rtc_SetTimeData (void)
 	{
 		DS1307_SetSecond(temptimedata.sec);
 		flag_line_timedata.flag_sec = 0;
+	}
+	if(flag_line_timedata.flag_timezone)
+	{
+		DS1307_SetTimeZone(temptimedata.timezone, 0);
+		flag_line_timedata.flag_timezone = 0;
 	}
 
 	flag_line_timedata.flag_readtemptimedata = 0;
@@ -273,6 +293,47 @@ void rtc_InstalTimeEncoder (void)
 		page_properties.page_list = page_start;
 		page_properties.line = line_0;
 	}
+}
+
+void rtc_InstalTimezoneGPSEncoder (void)
+{
+	if(flag_line_timedata.flag_readtemptimedata == 0)
+	{
+		flag_line_timedata.flag_readtemptimedata = 1;
+		temptimedata.timezone = DS1307_GetTimeZoneHour();
+	}
+	if(page_properties.line == line_0)
+	{
+		if(flag_line_timedata.flag_timezone == 0)
+		{
+			flag_line_timedata.flag_timezone = 1;
+			(TIM3->CNT) = (uint8_t)DS1307_GetTimeZoneHour() * 2;
+		}
+		else
+		{
+			if(Enc_Counter > 12)
+			{
+				(TIM3->CNT) = (uint8_t)(-12);
+			}
+			else if(((int8_t)Enc_Counter < -12))
+			{
+				(TIM3->CNT) = 12;
+			}
+			temptimedata.timezone = (int8_t)Enc_Counter;
+		}
+	}
+	if(page_properties.line == line_1)
+	{
+		rtc_SetTimeData();
+		page_properties.page_list = page_start;
+		page_properties.line = line_0;
+	}
+
+}
+
+void rtc_InstalSynchGPSEncoder (void)
+{
+
 }
 
 /************************ (C) COPYRIGHT malahov ****************END OF FILE****/

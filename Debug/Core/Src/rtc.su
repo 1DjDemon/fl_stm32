@@ -1,5 +1,7 @@
-../Core/Src/rtc.c:52:6:rtc_Init	8	static
-../Core/Src/rtc.c:85:6:rtc_SetTimeData	8	static
-../Core/Src/rtc.c:121:6:rtc_InstalDataEncoder	8	static
-../Core/Src/rtc.c:200:6:rtc_InstalTimeEncoder	8	static
-../Core/Src/rtc.c:65:6:rtc_handle	8	static
+../Core/Src/rtc.c:55:6:rtc_Init	8	static
+../Core/Src/rtc.c:100:6:rtc_SetTimeData	8	static
+../Core/Src/rtc.c:141:6:rtc_InstalDataEncoder	8	static
+../Core/Src/rtc.c:220:6:rtc_InstalTimeEncoder	8	static
+../Core/Src/rtc.c:298:6:rtc_InstalTimezoneGPSEncoder	8	static
+../Core/Src/rtc.c:70:6:rtc_handle	8	static
+../Core/Src/rtc.c:334:6:rtc_InstalSynchGPSEncoder	0	static

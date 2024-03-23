@@ -37,6 +37,8 @@ void display_setings_screen (void);
 void display_seting_data_screen (void);
 void display_seting_time_screen (void);
 void display_seting_GPS_screen (void);
+void display_seting_timezone_GPS_screen (void);
+void display_seting_synch_GPS_screen (void);
 
 /* Private user code ---------------------------------------------------------*/
 void display_Init(void)
@@ -108,17 +110,19 @@ void display_menu_screen (void)
 	ssd1306_SetCursor(10, 24);
 	sprintf((char*)Message,	"Setings");
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
-	ssd1306_SetCursor(10, 36);
-	sprintf((char*)Message,	"Test ");
-	ssd1306_WriteString((char*)Message, Font_7x10, White);
+//	ssd1306_SetCursor(10, 36);
+//	sprintf((char*)Message,	"Test ");
+//	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	 ssd1306_SetCursor(2, 24);
+	 page_properties.line=line_0;
 
-	switch(Enc_Counter%2)
-	{
-		case 0: ssd1306_SetCursor(2, 24); page_properties.line=line_0; break;
-		case 1: ssd1306_SetCursor(2, 36); page_properties.line=line_1;break;
-
-		default: break;
-	}
+//	switch(Enc_Counter%2)
+//	{
+//		case 0: ssd1306_SetCursor(2, 24); page_properties.line=line_0; break;
+//		case 1: ssd1306_SetCursor(2, 36); page_properties.line=line_1;break;
+//
+//		default: break;
+//	}
 	sprintf((char*)Message,	"*");
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
 
@@ -142,7 +146,7 @@ void display_setings_screen (void)
 	sprintf((char*)Message,	"Time");
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
 	ssd1306_SetCursor(10, 38);
-	sprintf((char*)Message,	"Synch GPS");
+	sprintf((char*)Message,	"Seting GPS");
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
 
 	switch(Enc_Counter%3)
@@ -208,10 +212,46 @@ void display_seting_GPS_screen (void)
 	ssd1306_SetCursor(2, 0);
 	sprintf((char*)Message,	"Seting GPS");
 	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	ssd1306_SetCursor(10, 14);
+	sprintf((char*)Message,	"Seting timezone");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	ssd1306_SetCursor(10, 26);
+	sprintf((char*)Message,	"Synch GPS");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+	switch(Enc_Counter%2)
+	{
+		case 0: ssd1306_SetCursor(2, 14); page_properties.line=line_0; break;
+		case 1: ssd1306_SetCursor(2, 26); page_properties.line=line_1;break;
+
+		default: break;
+	}
+	sprintf((char*)Message,	"*");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
 
 
 }
 
+
+void display_seting_timezone_GPS_screen (void)
+{
+	ssd1306_Fill(Black);
+
+	ssd1306_SetCursor(2, 0);
+	sprintf((char*)Message,	"Seting Timezone");
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+
+	ssd1306_SetCursor(10, 26);
+	sprintf((char*)Message,	"%02d", temptimedata.timezone);
+	ssd1306_WriteString((char*)Message, Font_7x10, White);
+	ssd1306_Line(10, 36, 24, 36, White);
+
+
+}
+void display_seting_synch_GPS_screen (void)
+{
+
+}
 
 
 

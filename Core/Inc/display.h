@@ -26,7 +26,9 @@ typedef enum
 	page_settings,
 	page_setting_date,
 	page_setting_time,
-	page_setting_GPS
+	page_setting_GPS,
+	page_setting_timezone_GPS,
+	page_setting_synch_GPS
 
 }page_list_t;
 

@@ -110,7 +110,7 @@ void encoder_init	(void)
 {
 	HAL_TIM_Encoder_MspInit(&htim3);
 	HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);
-	osDelay(100);
+	//osDelay(100);
 
 	button._type             = BUTTON_NORM_OPEN;
 	button._pulling_mode     = BUTTON_PULL_UP;
@@ -251,7 +251,6 @@ void keyboard_handling(void)
 	  {
 	    switch (button_get_clicks_count (&button))
 	    {
-	      //case 1:   agregat_reset_alarm (); break;
 	      case 5:   NVIC_SystemReset ();    break;
 	      default:                          break;
 	    }
@@ -323,6 +322,18 @@ void keyboard_handling(void)
 				default:	break;
 			}
 		}
+	}
+	if(page_properties.page_list == page_setting_timezone_GPS)
+	{
+		if(button_is_click(&button) == BUTTON_YES)
+		{
+			switch(page_properties.line)
+			{
+				case line_0: page_properties.line = line_1; break;
+				default:	break;
+			}
+		}
+
 	}
 }
 

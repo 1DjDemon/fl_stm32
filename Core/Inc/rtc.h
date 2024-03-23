@@ -36,6 +36,8 @@ typedef struct {
 	uint8_t 	month;
 	uint16_t	year;
 
+	int8_t		timezone;
+
 }rtc_t;
 
 

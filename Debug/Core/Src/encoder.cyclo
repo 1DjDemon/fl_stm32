@@ -6,4 +6,4 @@
 ../Core/Src/encoder.c:109:6:encoder_init	1
 ../Core/Src/encoder.c:135:6:button_timer_tick	1
 ../Core/Src/encoder.c:140:6:encoder_handling	18
-../Core/Src/encoder.c:248:6:keyboard_handling	23
+../Core/Src/encoder.c:248:6:keyboard_handling	26
